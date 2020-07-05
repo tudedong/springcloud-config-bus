@@ -13,7 +13,7 @@ config:
       key: cookieKey
       value: token
   email:
-    host: smtp.126.com
+    host: smtp.163.com
     sender:
       name: 
       password: 
