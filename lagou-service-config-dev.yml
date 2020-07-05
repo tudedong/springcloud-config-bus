@@ -1,0 +1,66 @@
+config:
+  request:
+    iplimit:
+      apis: /user/register/
+      intervalMinutes: 1
+      maxRequestCount: 20
+  response:
+    message:
+      seeother: 您频繁进⾏注册，请求已被拒绝！
+      unauthorize: 您的请求没有授权，请登录或注册后再访问！
+  cookie:
+    name:
+      auth: auth
+      token: token
+  email:
+    host: smtp.126.com
+    sender:
+      name: 
+      password: 
+    templates:
+      checkcode:
+        title: 注册验证码
+        content: 您好，本次登录的验证码为：%s，将在10分钟之后过期
+  code:
+    length: 6
+    fetch:
+      interval: 60
+    validate:
+      expire: 600
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: tudedong
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://SpringCloudEurekaServerA:8761/eureka,http://SpringCloudEurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/html,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exlude: "*"
