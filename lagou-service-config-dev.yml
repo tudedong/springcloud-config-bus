@@ -10,8 +10,8 @@ config:
       unauthorize: 您的请求没有授权，请登录或注册后再访问！
   cookie:
     name:
-      auth: auth
-      token: token
+      key: cookieKey
+      value: token
   email:
     host: smtp.126.com
     sender:
