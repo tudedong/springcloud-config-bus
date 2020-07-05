@@ -22,7 +22,6 @@ config:
         title: 注册验证码
         content: 您好，本次登录的验证码为：%s，将在10分钟之后过期
   code:
-    length: 6
     fetch:
       interval: 60
     validate:
