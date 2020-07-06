@@ -1,17 +1,13 @@
 config:
   request:
     iplimit:
-      apis: /user/register/
+      apis: /api/user/register/
       intervalMinutes: 1
-      maxRequestCount: 20
+      maxRequestCount: 6
   response:
     message:
       seeother: 您频繁进⾏注册，请求已被拒绝！
       unauthorize: 您的请求没有授权，请登录或注册后再访问！
-  cookie:
-    name:
-      key: cookieKey
-      value: token
   email:
     host: smtp.163.com
     sender:
